@@ -245,8 +245,8 @@ grad_DX = tf.gradients(DX_hat, [X_hat])[0]
 slopes_X = tf.sqrt(tf.reduce_sum(tf.square(grad_DX), axis=[1,2,3]))
 gp_X_loss = tf.reduce_mean((slopes_X - 1.0)**2)
 
-DY_gene_loss1 = tf.reduce_mean(DY_gene)
-DY_real_loss2 = tf.reduce_mean(DY_real) 
+DY_gene_loss = tf.reduce_mean(DY_gene)
+DY_real_loss = tf.reduce_mean(DY_real) 
 
 epsilon_Y = tf.random_uniform(shape=[batch, 1, 1, 1], minval=0.0, maxval=1.0)
 Y_hat = Y + epsilon_Y * (Y_predict - Y)
